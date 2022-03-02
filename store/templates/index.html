@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+  <h1>
+
+    <div class="row mx-auto">
+    {% for i in products %}
+        <div class="card mx-auto mb-3" style="width: 18rem;">
+        <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{ i.price }}</p>
+        <form action="/" method="POST">
+        {% csrf_token %}
+        <input type="text" value="{{ i.id }}" name="product" hidden><input type="submit" class="btn btn-primary btn-light border btn-sn " value="ADD TO CART">
+
+        </form>
+        </div>
+        </div>
+    {% endfor %}</div>
+</h1>
+</div>
+
+{% endblock %}
